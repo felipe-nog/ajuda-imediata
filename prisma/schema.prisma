@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum RoleType {
+  DOADOR
+  RECEPTOR
+  VOLUNTARIO
+}
+
+enum ItemType {
+  OFERTA
+  PEDIDO
+}
+
+enum ItemStatus {
+  ABERTO
+  EM_ANDAMENTO
+  CONCLUIDO
+}
+
+enum MatchStatus {
+  PENDENTE
+  A_CAMINHO
+  ENTREGUE
+  CANCELADO
+}
+
+model User {
+  id                      String    @id @default(uuid())
+  nome                    String
+  telefone                String 
+  tipo                    RoleType
+  bairro                  String 
+  criado_em               DateTime  @default(now())
+
+  itens                   Item[]    @relation("UserItems")
+  matches_como_voluntario Match[]   @relation("VoluntarioMatch")
+}
+
+model Item {
+  id                      String     @id @default(uuid())
+  tipo_publicacao         ItemType
+  categoria               String 
+  descricao               String     @db.Text
+  status                  ItemStatus @default(ABERTO)
+  criado_em               DateTime   @default(now())
+  atualizado_em           DateTime   @updatedAt
+
+  usuario_id String
+  usuario    User   @relation("UserItems", fields: [usuario_id], references: [id])
+
+  matches_como_oferta Match[] @relation("ItemOferta")
+  matches_como_pedido Match[] @relation("ItemPedido")
+}
+
+model Match {
+  id            String      @id @default(uuid())
+  status        MatchStatus @default(PENDENTE)
+  criado_em     DateTime    @default(now())
+  atualizado_em DateTime    @updatedAt
+
+  // A Oferta (quem está doando)
+  oferta_id String
+  oferta    Item   @relation("ItemOferta", fields: [oferta_id], references: [id])
+
+  // O Pedido (quem está precisando)
+  pedido_id String
+  pedido    Item   @relation("ItemPedido", fields: [pedido_id], references: [id])
+
+  // O Voluntário que vai fazer o frete (opcional)
+  voluntario_id String?
+  voluntario    User?   @relation("VoluntarioMatch", fields: [voluntario_id], references: [id])
+}
