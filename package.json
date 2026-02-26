@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npx prisma generate",
     "dev": "next dev",
+    "prebuild": "npx prisma generate",
     "build": "next build",
+    "prestart": "npx prisma generate",
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write"
