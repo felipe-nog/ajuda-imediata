@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Ajuda Imeadiata - Juiz de Fora",
-  description: "Iniativa para tornar mais direta a interação dos doadores com os necessitados.",
+  description: "Iniciativa para tornar mais direta a interação dos doadores com os necessitados.",
 };
 
 export default function RootLayout({
