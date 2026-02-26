@@ -10,7 +10,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
 }
 
 enum RoleType {
@@ -53,10 +53,11 @@ model Item {
   id                      String     @id @default(uuid())
   tipo_publicacao         ItemType
   categoria               String 
-  descricao               String     @db.Text
+  descricao               String?     @db.Text
   status                  ItemStatus @default(ABERTO)
   criado_em               DateTime   @default(now())
   atualizado_em           DateTime   @updatedAt
+  pin_seguranca           String
 
   usuario_id String
   usuario    User   @relation("UserItems", fields: [usuario_id], references: [id])
