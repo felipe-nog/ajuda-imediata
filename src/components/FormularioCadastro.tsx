@@ -79,7 +79,7 @@ export default function FormularioCadastro() {
         <input
           type="tel"
           name="telefone"
-          placeholder="WhatsApp (00)00000-0000"
+          placeholder="WhatsApp *"
           required
           value={telefone}
           onChange={handleTelefoneChange}
