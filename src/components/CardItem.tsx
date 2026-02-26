@@ -13,7 +13,7 @@ export default function CardItem({ item, onResolveClick }: ItemProps) {
 
   return (
     <div className={`bg-white rounded-lg shadow-sm border-l-4 ${corBorda} p-4 flex flex-col gap-3 transition-all hover:shadow-md`}>
-      <div className="flex justify-between items-start">
+      <div className="flex flex-wrap justify-between items-start">
         <div>
           <span className={`text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider ${corFundoBadge}`}>
             {textoBadge}
@@ -36,7 +36,6 @@ export default function CardItem({ item, onResolveClick }: ItemProps) {
             <span className="text-xs text-gray-500">
               {new Date(item.criado_em).toLocaleDateString('pt-BR')}
             </span>
-            {/* O Botão de resolver fica aqui agora */}
             {onResolveClick && (
               <>
                 <span className="text-gray-300">•</span>
@@ -58,7 +57,7 @@ export default function CardItem({ item, onResolveClick }: ItemProps) {
           className="bg-green-500 hover:bg-green-600 text-white text-sm font-bold py-2 px-4 rounded transition-colors flex items-center justify-center gap-2 w-full sm:w-auto"
         >
           <FaWhatsapp className="w-5 h-5" />
-          WhatsApp
+          Chamar no WhatsApp
         </Link>
       </div>
     </div>

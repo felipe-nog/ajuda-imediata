@@ -5,6 +5,7 @@ import { useState } from "react";
 import { resolverItem } from "../actions/doacao";
 import CardItem from "./CardItem";
 import { ItemComUsuario } from "@/types/itensTypes";
+import { CiSearch } from "react-icons/ci";
 
 export default function FeedInterativo({
   itensIniciais,
@@ -41,8 +42,8 @@ export default function FeedInterativo({
 
   return (
     <div>
-      <div className="bg-white p-4 rounded-lg shadow-sm mb-6 flex flex-col sm:flex-row gap-4">
-        <div className="flex bg-gray-100 p-1 rounded-md overflow-x-auto hide-scrollbar">
+      <div className="bg-white p-4 rounded-lg shadow-sm mb-6 flex flex-col gap-4">
+        <div className="flex md:items-center md:justify-center bg-gray-100 p-1 rounded-md overflow-x-auto hide-scrollbar">
           <button
             onClick={() => setFiltroTipo("TODOS")}
             className={`px-4 py-2 rounded whitespace-nowrap transition-colors ${filtroTipo === "TODOS" ? "bg-white shadow text-blue-700 font-bold" : "text-gray-600 hover:bg-gray-200"}`}
@@ -63,13 +64,16 @@ export default function FeedInterativo({
           </button>
         </div>
 
-        <input
-          type="text"
-          placeholder="Filtrar por Bairro (ex: Benfica, Centro...)"
-          value={filtroBairro}
-          onChange={(e) => setFiltroBairro(e.target.value)}
-          className="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none w-full"
-        />
+        <div className="">
+          <CiSearch className="w-8 h-8 absolute self-center pl-2 text-gray-800" />
+          <input
+            type="text"
+            placeholder="Filtrar por Bairro (ex: Benfica, Centro...)"
+            value={filtroBairro}
+            onChange={(e) => setFiltroBairro(e.target.value)}
+            className="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none w-full pl-10"
+          />
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">
