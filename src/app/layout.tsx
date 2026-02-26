@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ajuda Imeadiata - Juiz de Fora",
+  title: "Ajuda Imediata - Juiz de Fora",
   description: "Iniciativa para tornar mais direta a interação dos doadores com os necessitados.",
 };
 
