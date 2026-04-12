@@ -28,6 +28,8 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 * **[React](https://reactjs.org/)** - Biblioteca JavaScript para construção da UI.
 * **[Tailwind CSS](https://tailwindcss.com/)** - Estilização utilitária e responsiva.
 * **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática para maior segurança do código.
+* **PrismaORM** - Para fazer uma ponte entre o código e o banco de dados.
+* **PostgreSQL** - Banco de Dados;
 
 ## 🛠️ Como Executar Localmente
 
